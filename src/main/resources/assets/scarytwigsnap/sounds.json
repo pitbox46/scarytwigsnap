@@ -1,0 +1,16 @@
+{
+  "ambient.scary.forest": {
+    "subtitle": "scarytwigsnap.subtitle.scary.forest",
+    "sounds": [
+      {
+        "name": "scarytwigsnap:ambient/twig_snap"
+      },
+      {
+        "name": "scarytwigsnap:ambient/bone_break"
+      },
+      {
+        "name": "scarytwigsnap:ambient/branch_break"
+      }
+    ]
+  }
+}

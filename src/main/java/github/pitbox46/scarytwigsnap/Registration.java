@@ -9,18 +9,16 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class Registration {
-    static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, "eventz");
+    static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, "scarytwigsnap");
 
     public static void init() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         SOUND_EVENTS.register(modEventBus);
     }
 
-    public static final RegistryObject<SoundEvent> BONE_BREAK = createAmbientSound("bone_break");
-    public static final RegistryObject<SoundEvent> TWIG_SNAP = createAmbientSound("twig_snap");
-    public static final RegistryObject<SoundEvent> BRANCH_BREAK = createAmbientSound("branch_break");
+    public static final RegistryObject<SoundEvent> SCARY_FOREST = createAmbientSound("ambient.scary.forest");
 
     private static RegistryObject<SoundEvent> createAmbientSound(String name) {
-        return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation("scarytwigsnap:ambient." + name)));
+        return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation("scarytwigsnap", name)));
     }
 }
