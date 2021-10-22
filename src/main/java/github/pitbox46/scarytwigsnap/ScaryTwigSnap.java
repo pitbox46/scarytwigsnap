@@ -30,24 +30,24 @@ import java.util.Random;
 public class ScaryTwigSnap {
     private static final Logger LOGGER = LogManager.getLogger();
     public static final Random RANDOM = new Random();
-    private long tick = 0;
-    private final Long2ByteArrayMap tickMap = new Long2ByteArrayMap();
-    private final Object2FloatMap<SoundSource> soundMap = new Object2FloatOpenHashMap<>();
+    private static long tick = 0;
+    private static final Long2ByteArrayMap tickMap = new Long2ByteArrayMap();
+    private static final Object2FloatMap<SoundSource> soundMap = new Object2FloatOpenHashMap<>();
 
     public ScaryTwigSnap() {
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(ClientEvents.class);
         Registration.init();
     }
 
-    @Mod.EventBusSubscriber(value = Dist.CLIENT)
-    public class ClientEvents {
+    public static class ClientEvents {
         @SubscribeEvent
-        public void onClientPlayerTick(TickEvent.ClientTickEvent event) {
+        public static void onClientPlayerTick(TickEvent.ClientTickEvent event) {
             if (event.phase == TickEvent.Phase.START && Minecraft.getInstance().player != null && !Minecraft.getInstance().isPaused()) {
                 LocalPlayer localPlayer = Minecraft.getInstance().player;
                 boolean flag1 = localPlayer.level.getBiome(localPlayer.blockPosition()).getBiomeCategory() == Biome.BiomeCategory.FOREST;
                 if (flag1 && localPlayer.blockPosition().getY() > 50) {
-                    int randInt = RANDOM.nextInt(1000);
+                    int randInt = RANDOM.nextInt(100);
                     Options options = Minecraft.getInstance().options;
                     SoundManager soundManager = Minecraft.getInstance().getSoundManager();
                     if (tickMap.get(tick) == 1) {
@@ -65,6 +65,7 @@ public class ScaryTwigSnap {
                         for (SoundSource source : SoundSource.values()) {
                             if (!(source == SoundSource.AMBIENT || source == SoundSource.HOSTILE || source == SoundSource.MASTER)) {
                                 options.setSoundCategoryVolume(source, soundMap.apply(source));
+                                soundMap.removeFloat(source);
                             }
                         }
                     }

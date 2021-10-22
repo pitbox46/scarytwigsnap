@@ -3,13 +3,13 @@
     "subtitle": "scarytwigsnap.subtitle.scary.forest",
     "sounds": [
       {
-        "name": "scarytwigsnap:ambient/twig_snap"
+        "name": "scarytwigsnap:ambient/leaves_rustle_1"
       },
       {
-        "name": "scarytwigsnap:ambient/bone_break"
+        "name": "scarytwigsnap:ambient/leaves_rustle_2"
       },
       {
-        "name": "scarytwigsnap:ambient/branch_break"
+        "name": "scarytwigsnap:ambient/twig_crack"
       }
     ]
   }

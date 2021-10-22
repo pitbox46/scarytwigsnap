@@ -18,7 +18,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
 group = 'github.pitbox46'
-version = '1.17.1-1.0.0-SNAP1'
+version = '1.17.1-1.0.0'
 
 java {
     archivesBaseName = 'scarytwigsnap'
